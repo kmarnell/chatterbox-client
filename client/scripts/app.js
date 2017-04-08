@@ -1,16 +1,20 @@
 // YOUR CODE HERE:
 $( document ).ready(function() {
-	$('.username').on('click', function() {
-		app.handleUsernameClick();
+	$(this).on('click', '.username', function(event) {
+		app.handleUsernameClick(this);
 	});
-       
+
+	$('.submit').on('submit', function(event) {
+		app.handleSubmit();
+
+	})
+
  });
-
-
 
 
 var app = {
 	server: 'http://parse.sfm8.hackreactor.com/chatterbox/classes/messages'
+
 };
 
 app.init = function() {
@@ -75,15 +79,14 @@ app.renderRoom = function(roomname) {
 
 
 app.handleUsernameClick = function(username) {
-	//they are calling a click event and we need to write code to handle the event;
-
 	
 };
 
 
 app.handleSubmit = function(message) {
-	app.send(message);
-	app.renderMessage(message);
+	app.renderMessage(message.text);
+
+
 };
 
 
